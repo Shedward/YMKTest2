@@ -3,16 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		630F35F2265BD2DF00E89676 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F35F1265BD2DF00E89676 /* AppDelegate.swift */; };
 		630F35F4265BD2DF00E89676 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F35F3265BD2DF00E89676 /* SceneDelegate.swift */; };
 		630F35F6265BD2DF00E89676 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F35F5265BD2DF00E89676 /* ViewController.swift */; };
-		630F35F9265BD2DF00E89676 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630F35F7265BD2DF00E89676 /* Main.storyboard */; };
 		630F35FB265BD2E000E89676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630F35FA265BD2E000E89676 /* Assets.xcassets */; };
 		630F35FE265BD2E000E89676 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630F35FC265BD2E000E89676 /* LaunchScreen.storyboard */; };
+		6386FA2E265BDD52002A933C /* YandexMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 6386FA2D265BDD52002A933C /* YandexMaps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +20,12 @@
 		630F35F1265BD2DF00E89676 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		630F35F3265BD2DF00E89676 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		630F35F5265BD2DF00E89676 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		630F35F8265BD2DF00E89676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		630F35FA265BD2E000E89676 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		630F35FD265BD2E000E89676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		630F35FF265BD2E000E89676 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6386FA30265BDF17002A933C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		6386FA32265BEABE002A933C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6386FA34265BEB10002A933C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6386FA2E265BDD52002A933C /* YandexMaps in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				630F35F0265BD2DF00E89676 /* YMKTest2 */,
 				630F35EF265BD2DF00E89676 /* Products */,
+				630F3609265BD41300E89676 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +63,21 @@
 				630F35F1265BD2DF00E89676 /* AppDelegate.swift */,
 				630F35F3265BD2DF00E89676 /* SceneDelegate.swift */,
 				630F35F5265BD2DF00E89676 /* ViewController.swift */,
-				630F35F7265BD2DF00E89676 /* Main.storyboard */,
 				630F35FA265BD2E000E89676 /* Assets.xcassets */,
 				630F35FC265BD2E000E89676 /* LaunchScreen.storyboard */,
 				630F35FF265BD2E000E89676 /* Info.plist */,
 			);
 			path = YMKTest2;
+			sourceTree = "<group>";
+		};
+		630F3609265BD41300E89676 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6386FA34265BEB10002A933C /* CoreLocation.framework */,
+				6386FA32265BEABE002A933C /* SystemConfiguration.framework */,
+				6386FA30265BDF17002A933C /* CoreTelephony.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,12 +90,16 @@
 				630F35EA265BD2DF00E89676 /* Sources */,
 				630F35EB265BD2DF00E89676 /* Frameworks */,
 				630F35EC265BD2DF00E89676 /* Resources */,
+				6386FA2F265BDDE1002A933C /* CodeSign */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = YMKTest2;
+			packageProductDependencies = (
+				6386FA2D265BDD52002A933C /* YandexMaps */,
+			);
 			productName = YMKTest2;
 			productReference = 630F35EE265BD2DF00E89676 /* YMKTest2.app */;
 			productType = "com.apple.product-type.application";
@@ -126,11 +143,31 @@
 			files = (
 				630F35FE265BD2E000E89676 /* LaunchScreen.storyboard in Resources */,
 				630F35FB265BD2E000E89676 /* Assets.xcassets in Resources */,
-				630F35F9265BD2DF00E89676 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6386FA2F265BDDE1002A933C /* CodeSign */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = CodeSign;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# https://forums.swift.org/t/swiftpm-binarytarget-dependency-and-code-signing/38953\nfind \"${CODESIGNING_FOLDER_PATH}\" -name '*.framework' -print0 | while read -d $'\\0' framework \ndo \n    codesign --force --deep --sign \"${EXPANDED_CODE_SIGN_IDENTITY}\" --preserve-metadata=identifier,entitlements --timestamp=none \"${framework}\" \ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		630F35EA265BD2DF00E89676 /* Sources */ = {
@@ -146,14 +183,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		630F35F7265BD2DF00E89676 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				630F35F8265BD2DF00E89676 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		630F35FC265BD2E000E89676 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,15 +315,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AZ4B3VLD93;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = YMKTest2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "me.shedward.ymk-test.YMKTest2";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3.0",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.m2.squaremeter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -305,15 +339,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AZ4B3VLD93;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = YMKTest2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "me.shedward.ymk-test.YMKTest2";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3.0",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.m2.squaremeter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -341,6 +380,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6386FA2D265BDD52002A933C /* YandexMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = YandexMaps;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 630F35E6265BD2DF00E89676 /* Project object */;
 }
