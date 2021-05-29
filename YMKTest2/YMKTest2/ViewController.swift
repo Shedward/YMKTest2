@@ -9,70 +9,45 @@ import UIKit
 import YandexMapsMobile
 
 class ViewController: UIViewController {
-	private let panoView = YMKPanoView(frame: .zero, vulkanPreferred: true)!
-	private let yandexResourceImageView = UIImageView()
-	private var panoramaSession: YMKPanoramaServiceSearchSession?
-
-	private let SEARCH_LOCATION = YMKPoint(latitude: 55.733330, longitude: 37.587649)
-
-	override func loadView() {
-		self.view = panoView
-	}
+	private let mapSelectionOverlayView = MapSelectionOverlayView()
+	private let mapView = YMKMapView(frame: .zero, vulkanPreferred: true)!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		loadPanorama(for: SEARCH_LOCATION)
-		// Если раскоментить то иконка из YMK появится на экране
-		//displaySomeYandexResource()
+		appendToVerticalStack(mapView)
+
+		mapSelectionOverlayView.onFinishDrawing = { [weak self] points in
+			self?.addPolygonToMap(points: points)
+		}
+		appendToVerticalStack(mapSelectionOverlayView)
 	}
 
-	private func displaySomeYandexResource() {
-		let image = UIImage(named: "search_layer_pin_selected_default")
-		yandexResourceImageView.image = image
-		yandexResourceImageView.translatesAutoresizingMaskIntoConstraints = false
-		panoView.addSubview(yandexResourceImageView)
+	private func appendToVerticalStack(_ view: UIView) {
+		view.translatesAutoresizingMaskIntoConstraints = false
+		self.view.addSubview(view)
 		NSLayoutConstraint.activate([
-			yandexResourceImageView.bottomAnchor.constraint(equalTo: panoView.bottomAnchor),
-			yandexResourceImageView.leadingAnchor.constraint(equalTo: panoView.leadingAnchor)
+			view.topAnchor.constraint(equalTo: self.view.topAnchor),
+			view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+			view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+			view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
 		])
 	}
 
-	private func loadPanorama(for point: YMKPoint) {
-		let panoramaService = YMKPlaces.sharedInstance().createPanoramaService()
-		panoramaSession = panoramaService.findNearest(withPosition: point) { panoramaId, error in
-			if let panoramaId = panoramaId {
-				self.showPanorama(panoramaId)
-			} else if let error = error {
-				self.showError(error)
-			}
+	private func addPolygonToMap(points: [CGPoint]) {
+		let map = mapView.mapWindow.map
+
+		let mapPoints: [YMKPoint] = points.compactMap { point in
+			mapView.mapWindow.screenToWorld(
+				with: YMKScreenPoint(
+					x: Float(point.x) * mapView.mapWindow.scaleFactor,
+					y: Float(point.y) * mapView.mapWindow.scaleFactor
+				)
+			)
 		}
-	}
-
-	private func showPanorama(_ panoramaId: String) {
-		panoView.player.openPanorama(withPanoramaId: panoramaId)
-		panoView.player.enableMove()
-		panoView.player.enableRotation()
-		panoView.player.enableZoom()
-		panoView.player.enableMarkers()
-	}
-
-	private func showError(_ error: Error) {
-		let panoramaSearchError = (error as NSError).userInfo[YRTUnderlyingErrorKey] as! YRTError
-
-		var errorMessage = "Unknown error"
-		if panoramaSearchError.isKind(of: YMKPanoramaNotFoundError.self) {
-			errorMessage = "Not found"
-		} else if panoramaSearchError.isKind(of: YRTNetworkError.self) {
-			errorMessage = "Network error"
-		} else if panoramaSearchError.isKind(of: YRTRemoteError.self) {
-			errorMessage = "Remote server error"
-		}
-
-		let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-
-		present(alert, animated: true, completion: nil)
+		let polygon = YMKPolygon(outerRing: YMKLinearRing(points: mapPoints), innerRings: [])
+		let mapPolygon = map.mapObjects.addPolygon(with: polygon)
+		mapPolygon.strokeWidth = 1
 	}
 }
 

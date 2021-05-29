@@ -12,6 +12,7 @@
 		630F35F6265BD2DF00E89676 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630F35F5265BD2DF00E89676 /* ViewController.swift */; };
 		630F35FB265BD2E000E89676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 630F35FA265BD2E000E89676 /* Assets.xcassets */; };
 		630F35FE265BD2E000E89676 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630F35FC265BD2E000E89676 /* LaunchScreen.storyboard */; };
+		6324AFCC265FE5AB0087D09B /* MapSelectionOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324AFCB265FE5AB0087D09B /* MapSelectionOverlayView.swift */; };
 		6386FA2E265BDD52002A933C /* YandexMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 6386FA2D265BDD52002A933C /* YandexMaps */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		630F35FA265BD2E000E89676 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		630F35FD265BD2E000E89676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		630F35FF265BD2E000E89676 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6324AFCB265FE5AB0087D09B /* MapSelectionOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelectionOverlayView.swift; sourceTree = "<group>"; };
 		6386FA30265BDF17002A933C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		6386FA32265BEABE002A933C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6386FA34265BEB10002A933C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -60,6 +62,7 @@
 		630F35F0265BD2DF00E89676 /* YMKTest2 */ = {
 			isa = PBXGroup;
 			children = (
+				63D658E5265D237E002D8297 /* MapSelection */,
 				630F35F1265BD2DF00E89676 /* AppDelegate.swift */,
 				630F35F3265BD2DF00E89676 /* SceneDelegate.swift */,
 				630F35F5265BD2DF00E89676 /* ViewController.swift */,
@@ -78,6 +81,14 @@
 				6386FA30265BDF17002A933C /* CoreTelephony.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63D658E5265D237E002D8297 /* MapSelection */ = {
+			isa = PBXGroup;
+			children = (
+				6324AFCB265FE5AB0087D09B /* MapSelectionOverlayView.swift */,
+			);
+			path = MapSelection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +187,7 @@
 			files = (
 				630F35F6265BD2DF00E89676 /* ViewController.swift in Sources */,
 				630F35F2265BD2DF00E89676 /* AppDelegate.swift in Sources */,
+				6324AFCC265FE5AB0087D09B /* MapSelectionOverlayView.swift in Sources */,
 				630F35F4265BD2DF00E89676 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
